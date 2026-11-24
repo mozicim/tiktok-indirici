@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="color-scheme" content="dark">
   <meta name="theme-color" content="#12110f">
-  <title>Filigransız TikTok İndirici</title>
-
+  <title>Video İndirici</title>
+  <meta name="description" content="Kendi videolarını TikTok, Instagram, YouTube, Facebook ve diğer platformlardan kaydet.">
   <link rel="manifest" href="./manifest.webmanifest">
   <link rel="icon" type="image/png" sizes="32x32" href="./icons/favicon-32.png">
   <link rel="icon" type="image/png" sizes="192x192" href="./icons/icon-192.png">
@@ -14,9 +14,8 @@
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <meta name="apple-mobile-web-app-title" content="TT İndir">
-  <meta name="application-name" content="TT İndir">
-  <meta name="description" content="Kendi TikTok videolarını filigransız MP4 olarak kaydet.">
+  <meta name="apple-mobile-web-app-title" content="İndir">
+  <meta name="application-name" content="İndir">
   <style>
     :root {
       --bg: #12110f;
@@ -36,7 +35,6 @@
       --radius: 22px;
       --font: "Segoe UI", "SF Pro Text", "Helvetica Neue", ui-sans-serif, system-ui, -apple-system, Roboto, "Noto Sans", "Noto Sans Turkish", sans-serif;
     }
-
     * { box-sizing: border-box; margin: 0; padding: 0; }
     html, body { min-height: 100%; }
     body {
@@ -52,218 +50,108 @@
     }
     body::before {
       content: "";
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      opacity: 0.12;
+      position: fixed; inset: 0; pointer-events: none; opacity: 0.12; z-index: 0;
       background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)' opacity='.55'/%3E%3C/svg%3E");
-      z-index: 0;
     }
-
-    .wrap {
-      position: relative;
-      z-index: 1;
-      width: min(440px, 100%);
-      margin: 0 auto;
-    }
-
+    .wrap { position: relative; z-index: 1; width: min(440px, 100%); margin: 0 auto; }
     header { text-align: left; margin-bottom: 22px; }
     .brand {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 12px;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--gold);
-      font-weight: 650;
-      margin-bottom: 14px;
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--gold); font-weight: 650; margin-bottom: 14px;
     }
     .brand-mark {
-      width: 22px;
-      height: 22px;
-      border-radius: 7px;
+      width: 22px; height: 22px; border-radius: 7px;
       background: linear-gradient(160deg, var(--gold-2), var(--gold));
-      color: #1a1406;
-      display: grid;
-      place-items: center;
-      font-size: 11px;
-      font-weight: 800;
-      box-shadow: 0 0 0 4px var(--gold-dim);
+      color: #1a1406; display: grid; place-items: center;
+      font-size: 11px; font-weight: 800; box-shadow: 0 0 0 4px var(--gold-dim);
     }
-    h1 {
-      font-size: clamp(1.7rem, 7vw, 2.05rem);
-      letter-spacing: -0.04em;
-      line-height: 1.1;
-      font-weight: 720;
-      margin-bottom: 8px;
-    }
+    h1 { font-size: clamp(1.7rem, 7vw, 2.05rem); letter-spacing: -0.04em; line-height: 1.1; font-weight: 720; margin-bottom: 8px; }
     h1 span { color: var(--gold-2); }
-    .lede {
-      color: var(--muted);
-      font-size: 0.98rem;
-      max-width: 36ch;
+    .lede { color: var(--muted); font-size: 0.98rem; max-width: 40ch; }
+    .platforms { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 12px; }
+    .platforms span {
+      font-size: 11.5px; font-weight: 650; color: var(--gold-2);
+      background: var(--gold-dim); border-radius: 999px; padding: 3px 9px;
     }
-
     .panel {
       background: linear-gradient(180deg, rgba(255,255,255,0.03), transparent 40%), var(--card);
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      padding: 16px;
-      box-shadow: var(--shadow);
+      border: 1px solid var(--line); border-radius: var(--radius);
+      padding: 16px; box-shadow: var(--shadow);
     }
-
-    label.sr {
-      position: absolute;
-      width: 1px; height: 1px;
-      overflow: hidden;
-      clip: rect(0 0 0 0);
-    }
-
-    .row {
-      display: flex;
-      gap: 8px;
-    }
+    label.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+    .row { display: flex; gap: 8px; }
     input[type="url"], input[type="text"] {
-      flex: 1;
-      min-width: 0;
-      background: var(--bg);
-      color: var(--ink);
-      border: 1px solid var(--line);
-      border-radius: 14px;
-      padding: 13px 14px;
-      font: inherit;
-      font-size: 15px;
-      outline: none;
+      flex: 1; min-width: 0; background: var(--bg); color: var(--ink);
+      border: 1px solid var(--line); border-radius: 14px; padding: 13px 14px;
+      font: inherit; font-size: 15px; outline: none;
       transition: border-color .15s, box-shadow .15s;
     }
     input::placeholder { color: #7d776c; }
-    input:focus {
-      border-color: rgba(232, 184, 74, 0.7);
-      box-shadow: 0 0 0 4px var(--gold-dim);
-    }
-
+    input:focus { border-color: rgba(232, 184, 74, 0.7); box-shadow: 0 0 0 4px var(--gold-dim); }
     button {
-      font: inherit;
-      border: 0;
-      cursor: pointer;
-      border-radius: 14px;
-      font-weight: 650;
+      font: inherit; border: 0; cursor: pointer; border-radius: 14px; font-weight: 650;
       transition: transform .12s ease, filter .12s ease, background .12s ease, opacity .12s;
     }
     button:active { transform: translateY(1px); }
     button:disabled { opacity: 0.55; cursor: not-allowed; transform: none; }
-
     .btn-paste {
-      background: var(--bg-2);
-      color: var(--ink);
-      border: 1px solid var(--line);
-      padding: 0 14px;
-      white-space: nowrap;
-      font-size: 14px;
+      background: var(--bg-2); color: var(--ink); border: 1px solid var(--line);
+      padding: 0 14px; white-space: nowrap; font-size: 14px;
     }
     .btn-paste:hover { background: #26251f; }
-
     .btn-go {
-      width: 100%;
-      margin-top: 10px;
+      width: 100%; margin-top: 10px;
       background: linear-gradient(180deg, var(--gold-2), var(--gold));
-      color: #1a1406;
-      padding: 13px 16px;
-      font-size: 15.5px;
+      color: #1a1406; padding: 13px 16px; font-size: 15.5px;
       box-shadow: 0 8px 24px rgba(232, 184, 74, 0.22);
     }
     .btn-go:hover { filter: brightness(1.05); }
-
-    .status {
-      margin-top: 14px;
-      border-radius: 14px;
-      padding: 12px 14px;
-      font-size: 14px;
-      display: none;
+    .btn-install {
+      display: none; width: 100%; margin-top: 10px; background: transparent;
+      color: var(--gold-2); border: 1px dashed rgba(232, 184, 74, 0.4);
+      padding: 12px 16px; font-size: 14.5px;
+      align-items: center; justify-content: center; gap: 8px;
     }
+    .btn-install.visible { display: flex; }
+    .btn-install svg { width: 18px; height: 18px; flex: none; }
+    .status { margin-top: 14px; border-radius: 14px; padding: 12px 14px; font-size: 14px; display: none; }
     .status.show { display: block; }
     .status.info { background: var(--gold-dim); color: var(--gold-2); }
     .status.err { background: var(--danger-dim); color: #ffc2b8; }
     .status.ok { background: var(--ok-dim); color: #c8ebbb; }
     .status .spin {
-      display: inline-block;
-      width: 12px; height: 12px;
-      border: 2px solid currentColor;
-      border-right-color: transparent;
-      border-radius: 50%;
-      margin-right: 8px;
-      vertical-align: -1px;
+      display: inline-block; width: 12px; height: 12px;
+      border: 2px solid currentColor; border-right-color: transparent;
+      border-radius: 50%; margin-right: 8px; vertical-align: -1px;
       animation: spin .7s linear infinite;
     }
     @keyframes spin { to { transform: rotate(360deg); } }
-
-    .result {
-      margin-top: 16px;
-      display: none;
-    }
+    .result { margin-top: 16px; display: none; }
     .result.show { display: block; }
-
-    .meta {
-      display: grid;
-      grid-template-columns: 92px 1fr;
-      gap: 12px;
-      align-items: start;
-    }
+    .meta { display: grid; grid-template-columns: 92px 1fr; gap: 12px; align-items: start; }
     .thumb-wrap {
-      width: 92px;
-      aspect-ratio: 3 / 4;
-      border-radius: 14px;
-      overflow: hidden;
-      background: #0c0c0b;
-      border: 1px solid var(--line);
+      width: 92px; aspect-ratio: 3 / 4; border-radius: 14px; overflow: hidden;
+      background: #0c0c0b; border: 1px solid var(--line);
+      display: grid; place-items: center; color: var(--gold-2); font-size: 11px; font-weight: 700; text-align: center; padding: 6px;
     }
-    .thumb-wrap img {
-      width: 100%; height: 100%;
-      object-fit: cover;
-      display: block;
-    }
+    .thumb-wrap img { width: 100%; height: 100%; object-fit: cover; display: block; }
     .who { font-weight: 700; font-size: 15px; }
     .who small { display: block; color: var(--muted); font-weight: 500; font-size: 12.5px; margin-top: 1px; }
     .caption {
-      margin-top: 8px;
-      color: #d9d1c3;
-      font-size: 13.5px;
-      display: -webkit-box;
-      -webkit-line-clamp: 4;
-      -webkit-box-orient: vertical;
-      overflow: hidden;
+      margin-top: 8px; color: #d9d1c3; font-size: 13.5px;
+      display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; overflow: hidden;
     }
-    .chips {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-      margin-top: 10px;
-    }
+    .chips { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
     .chip {
-      font-size: 11.5px;
-      color: var(--gold-2);
-      background: var(--gold-dim);
-      border-radius: 999px;
-      padding: 3px 8px;
-      font-weight: 650;
+      font-size: 11.5px; color: var(--gold-2); background: var(--gold-dim);
+      border-radius: 999px; padding: 3px 8px; font-weight: 650;
     }
-
-    .actions {
-      display: grid;
-      gap: 8px;
-      margin-top: 14px;
-    }
+    .actions { display: grid; gap: 8px; margin-top: 14px; }
     .btn-dl {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 10px;
-      padding: 13px 14px;
-      text-align: left;
-      color: var(--ink);
-      background: var(--bg);
-      border: 1px solid var(--line);
+      display: flex; align-items: center; justify-content: space-between; gap: 10px;
+      padding: 13px 14px; text-align: left; color: var(--ink);
+      background: var(--bg); border: 1px solid var(--line);
     }
     .btn-dl:hover { border-color: rgba(232, 184, 74, 0.45); background: #1a1916; }
     .btn-dl.primary {
@@ -274,136 +162,54 @@
     .btn-dl .title { font-size: 14.5px; }
     .btn-dl .hint { font-size: 11.5px; color: var(--muted); font-weight: 500; }
     .badge {
-      font-size: 10.5px;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      background: var(--gold);
-      color: #1a1406;
-      border-radius: 999px;
-      padding: 3px 7px;
-      font-weight: 800;
+      font-size: 10.5px; letter-spacing: 0.06em; text-transform: uppercase;
+      background: var(--gold); color: #1a1406; border-radius: 999px; padding: 3px 7px; font-weight: 800;
     }
-    .badge.ghost {
-      background: transparent;
-      color: var(--muted);
-      border: 1px solid var(--line);
-    }
-
+    .badge.ghost { background: transparent; color: var(--muted); border: 1px solid var(--line); }
     .photos { margin-top: 14px; }
     .photos h2 {
-      font-size: 13px;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--muted);
-      margin-bottom: 8px;
+      font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase;
+      color: var(--muted); margin-bottom: 8px;
     }
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 8px;
-    }
+    .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
     .grid button {
-      position: relative;
-      padding: 0;
-      border-radius: 12px;
-      overflow: hidden;
-      background: #0c0c0b;
-      border: 1px solid var(--line);
+      position: relative; padding: 0; border-radius: 12px; overflow: hidden;
+      background: #0c0c0b; border: 1px solid var(--line);
     }
     .grid img { width: 100%; aspect-ratio: 1; object-fit: cover; display: block; }
     .grid .tag {
-      position: absolute;
-      left: 6px; bottom: 6px;
-      background: rgba(0,0,0,.65);
-      color: #fff;
-      font-size: 10px;
-      padding: 2px 6px;
-      border-radius: 999px;
-      font-weight: 700;
+      position: absolute; left: 6px; bottom: 6px; background: rgba(0,0,0,.65);
+      color: #fff; font-size: 10px; padding: 2px 6px; border-radius: 999px; font-weight: 700;
     }
-
-    footer {
-      margin-top: 22px;
-      color: var(--muted);
-      font-size: 12.2px;
-      line-height: 1.65;
-    }
+    footer { margin-top: 22px; color: var(--muted); font-size: 12.2px; line-height: 1.65; }
     footer strong { color: #d9d1c3; font-weight: 650; }
-    .by {
-      margin-top: 10px;
-      color: #7d776c;
-      letter-spacing: 0.08em;
-      font-size: 11px;
-      text-transform: uppercase;
-    }
-
-    .btn-install {
-      display: none;
-      width: 100%;
-      margin-top: 10px;
-      background: transparent;
-      color: var(--gold-2);
-      border: 1px dashed rgba(232, 184, 74, 0.4);
-      padding: 12px 16px;
-      font-size: 14.5px;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-    }
-    .btn-install.visible { display: flex; }
-    .btn-install svg { width: 18px; height: 18px; flex: none; }
+    .by { margin-top: 10px; color: #7d776c; letter-spacing: 0.08em; font-size: 11px; text-transform: uppercase; }
     .sheet-backdrop {
-      display: none;
-      position: fixed;
-      inset: 0;
-      background: rgba(0, 0, 0, 0.62);
-      z-index: 40;
-      padding: 18px;
-      align-items: flex-end;
-      justify-content: center;
+      display: none; position: fixed; inset: 0; background: rgba(0, 0, 0, 0.62);
+      z-index: 40; padding: 18px; align-items: flex-end; justify-content: center;
     }
     .sheet-backdrop.open { display: flex; }
     .sheet {
-      width: min(440px, 100%);
-      background: var(--card);
-      border: 1px solid var(--line);
-      border-radius: 22px 22px 18px 18px;
-      padding: 18px 18px 16px;
-      box-shadow: var(--shadow);
-      margin-bottom: env(safe-area-inset-bottom);
+      width: min(440px, 100%); background: var(--card); border: 1px solid var(--line);
+      border-radius: 22px 22px 18px 18px; padding: 18px 18px 16px;
+      box-shadow: var(--shadow); margin-bottom: env(safe-area-inset-bottom);
     }
     .sheet h2 { font-size: 1.15rem; letter-spacing: -0.03em; margin-bottom: 6px; }
     .sheet .lede { margin-bottom: 14px; font-size: 0.92rem; }
     .steps { list-style: none; display: grid; gap: 10px; }
     .steps li {
-      display: grid;
-      grid-template-columns: 28px 1fr;
-      gap: 10px;
-      align-items: start;
-      background: var(--bg);
-      border: 1px solid var(--line);
-      border-radius: 14px;
-      padding: 10px 12px;
-      font-size: 14px;
+      display: grid; grid-template-columns: 28px 1fr; gap: 10px; align-items: start;
+      background: var(--bg); border: 1px solid var(--line); border-radius: 14px;
+      padding: 10px 12px; font-size: 14px;
     }
     .steps .n {
-      width: 28px; height: 28px;
-      border-radius: 9px;
-      background: var(--gold-dim);
-      color: var(--gold-2);
-      display: grid; place-items: center;
-      font-weight: 800; font-size: 13px;
+      width: 28px; height: 28px; border-radius: 9px; background: var(--gold-dim);
+      color: var(--gold-2); display: grid; place-items: center; font-weight: 800; font-size: 13px;
     }
-    .share-glyph {
-      display: inline-flex; vertical-align: -3px; margin: 0 2px;
-    }
+    .share-glyph { display: inline-flex; vertical-align: -3px; margin: 0 2px; }
     .sheet-close {
-      width: 100%;
-      margin-top: 14px;
-      background: var(--bg);
-      color: var(--ink);
-      border: 1px solid var(--line);
-      padding: 12px 16px;
+      width: 100%; margin-top: 14px; background: var(--bg); color: var(--ink);
+      border: 1px solid var(--line); padding: 12px 16px;
     }
     @media (display-mode: standalone), (display-mode: fullscreen) {
       .btn-install { display: none !important; }
@@ -411,39 +217,43 @@
   </style>
 </head>
 <body>
+
   <div class="wrap">
     <header>
       <div class="brand"><span class="brand-mark">M</span> mozicim</div>
-      <h1>Filigransız <span>TikTok</span> indirici</h1>
-      <p class="lede">Bağlantıyı yapıştır, videoyu filigransız MP4 olarak kaydet. Kendi videoların için pratik bir araç.</p>
+      <h1>Video <span>indirici</span></h1>
+      <p class="lede">Bağlantıyı yapıştır, videoyu kendi cihazına kaydet. TikTok’ta filigransız seçenek de var.</p>
+      <div class="platforms" aria-label="Denenmiş platformlar">
+        <span>TikTok</span><span>Instagram</span><span>YouTube</span><span>Facebook</span>
+      </div>
     </header>
 
     <form class="panel" id="form" autocomplete="off">
-      <label class="sr" for="url">TikTok bağlantısı</label>
+      <label class="sr" for="url">Video bağlantısı</label>
       <div class="row">
-        <input id="url" type="text" inputmode="url" spellcheck="false" placeholder="tiktok.com, vm.tiktok.com veya vt.tiktok.com…">
+        <input id="url" type="text" inputmode="url" spellcheck="false" placeholder="TikTok, Instagram, YouTube, Facebook linki…">
         <button class="btn-paste" type="button" id="pasteBtn">Yapıştır</button>
       </div>
       <button class="btn-go" type="submit" id="goBtn">Videoyu getir</button>
+      
+      <button type="button" class="btn-install" id="installBtn" aria-controls="iosSheet">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M12 3v12"/><path d="m8 11 4 4 4-4"/><path d="M5 21h14"/>
+        </svg>
+        Ana ekrana ekle
+      </button>
 
-    <button type="button" class="btn-install" id="installBtn" aria-controls="iosSheet">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-        <path d="M12 3v12"/><path d="m8 11 4 4 4-4"/><path d="M5 21h14"/>
-      </svg>
-      Ana ekrana ekle
-    </button>
     </form>
 
     <div class="status" id="status" role="status" aria-live="polite"></div>
-
     <section class="panel result" id="result" hidden></section>
 
     <footer>
       <strong>Sadece kendi videoların veya izin aldığın videolar için kullan.</strong>
-      Bu sayfa TikTok’a doğrudan bağlanamaz; ücretsiz bir üçüncü taraf servise başvurur. Servis durursa, yavaşlarsa veya limiti dolarsa indirme çalışmayabilir.
+      Bu sayfa platformlara doğrudan bağlanamaz; ücretsiz üçüncü taraf servislere başvurur. Servis durursa, yavaşlarsa (bazen 30–60 sn sürebilir) veya limiti dolarsa indirme çalışmayabilir.
       <div class="by">@mozicim</div>
     </footer>
-
+    
     <div class="sheet-backdrop" id="iosSheet" hidden>
       <div class="sheet" role="dialog" aria-modal="true" aria-labelledby="iosSheetTitle">
         <h2 id="iosSheetTitle">iPhone’da ana ekrana ekle</h2>
@@ -458,12 +268,27 @@
         <button type="button" class="sheet-close" id="iosSheetClose">Tamam</button>
       </div>
     </div>
+
   </div>
 
   <script>
+
     (function () {
       const TIKWM = "https://www.tikwm.com/api/";
       const GENDOWNLOAD = "https://gendownload.com/api/extract";
+      const EXTRACT_TIMEOUT = 120000;
+
+      const PLATFORMS = [
+        { id: "tiktok", name: "TikTok", hosts: ["tiktok.com", "vm.tiktok.com", "vt.tiktok.com"] },
+        { id: "instagram", name: "Instagram", hosts: ["instagram.com", "instagr.am"] },
+        { id: "youtube", name: "YouTube", hosts: ["youtube.com", "youtu.be", "youtube-nocookie.com", "m.youtube.com", "music.youtube.com"] },
+        { id: "facebook", name: "Facebook", hosts: ["facebook.com", "fb.com", "fb.watch", "m.facebook.com"] },
+        { id: "x", name: "X", hosts: ["x.com", "twitter.com", "mobile.twitter.com", "t.co"] },
+        { id: "pinterest", name: "Pinterest", hosts: ["pinterest.com", "pin.it"] },
+        { id: "threads", name: "Threads", hosts: ["threads.net", "threads.com"] },
+        { id: "reddit", name: "Reddit", hosts: ["reddit.com", "redd.it"] },
+        { id: "snapchat", name: "Snapchat", hosts: ["snapchat.com"] }
+      ];
 
       const form = document.getElementById("form");
       const input = document.getElementById("url");
@@ -472,27 +297,44 @@
       const statusEl = document.getElementById("status");
       const resultEl = document.getElementById("result");
 
-      const URL_RE = /https?:\/\/(?:(?:www|m|vm|vt)\.)?tiktok\.com\/[^\s<>"']+/i;
-      const BARE_RE = /(?:(?:www|m|vm|vt)\.)?tiktok\.com\/[^\s<>"']+/i;
+      const URL_RE = /https?:\/\/[^\s<>"']+/i;
+      const BARE_HOSTS = "(?:(?:www|m|vm|vt)\\.)?(?:tiktok\\.com|instagram\\.com|instagr\\.am|youtube\\.com|youtu\\.be|facebook\\.com|fb\\.watch|fb\\.com|x\\.com|twitter\\.com|pinterest\\.com|pin\\.it|threads\\.net|threads\\.com|reddit\\.com|redd\\.it|snapchat\\.com)";
+      const BARE_RE = new RegExp(BARE_HOSTS + "/[^\\s<>\"']*", "i");
+      const BARE_HOST_ONLY = new RegExp("^" + BARE_HOSTS + "$", "i");
 
-      function extractTikTokUrl(raw) {
+      function extractMediaUrl(raw) {
         const text = String(raw || "").trim();
         if (!text) return "";
         const withScheme = text.match(URL_RE);
         if (withScheme) return withScheme[0].replace(/[),.;!?]+$/, "");
-        const bare = text.match(BARE_RE);
+        const bare = text.match(BARE_RE) || text.match(new RegExp(BARE_HOSTS, "i"));
         if (bare) return "https://" + bare[0].replace(/[),.;!?]+$/, "");
         return "";
       }
 
-      function isTikTokUrl(url) {
+      function hostOf(url) {
+        try { return new URL(url).hostname.replace(/^www\./, "").toLowerCase(); }
+        catch { return ""; }
+      }
+
+      function detectPlatform(url) {
+        const host = hostOf(url);
+        if (!host) return { id: "other", name: "Bağlantı" };
+        for (let i = 0; i < PLATFORMS.length; i++) {
+          const p = PLATFORMS[i];
+          for (let j = 0; j < p.hosts.length; j++) {
+            const h = p.hosts[j];
+            if (host === h || host.endsWith("." + h)) return p;
+          }
+        }
+        return { id: "other", name: "Diğer" };
+      }
+
+      function isSupportedUrl(url) {
         try {
           const u = new URL(url);
-          const host = u.hostname.replace(/^www\./, "").toLowerCase();
-          return host === "tiktok.com" || host === "m.tiktok.com" || host === "vm.tiktok.com" || host === "vt.tiktok.com";
-        } catch {
-          return false;
-        }
+          return u.protocol === "http:" || u.protocol === "https:";
+        } catch { return false; }
       }
 
       function absUrl(url) {
@@ -504,10 +346,8 @@
 
       function escapeHtml(s) {
         return String(s == null ? "" : s)
-          .replace(/&/g, "&amp;")
-          .replace(/</g, "&lt;")
-          .replace(/>/g, "&gt;")
-          .replace(/"/g, "&quot;");
+          .replace(/&/g, "&amp;").replace(/</g, "&lt;")
+          .replace(/>/g, "&gt;").replace(/"/g, "&quot;");
       }
 
       function formatDuration(sec) {
@@ -531,7 +371,17 @@
           .replace(/_+/g, "_")
           .replace(/^_|_$/g, "")
           .slice(0, 60);
-        return cleaned || fallback || "tiktok";
+        return cleaned || fallback || "video";
+      }
+
+      function qualityRank(label) {
+        const m = String(label || "").match(/(\d+)/);
+        if (m) return Number(m[1]);
+        const l = String(label || "").toLowerCase();
+        if (l === "hd") return 1080;
+        if (l === "sd") return 480;
+        if (l === "video") return 500;
+        return 0;
       }
 
       function setStatus(kind, html) {
@@ -543,9 +393,20 @@
         statusEl.innerHTML = "";
       }
 
+      async function fetchWithTimeout(resource, options, timeout) {
+        const ctrl = new AbortController();
+        const t = setTimeout(function () { ctrl.abort(); }, timeout || EXTRACT_TIMEOUT);
+        try {
+          const opts = Object.assign({}, options || {}, { signal: ctrl.signal });
+          return await fetch(resource, opts);
+        } finally {
+          clearTimeout(t);
+        }
+      }
+
       async function fetchTikwm(url) {
         const endpoint = TIKWM + "?url=" + encodeURIComponent(url) + "&hd=1";
-        const res = await fetch(endpoint, { method: "GET" });
+        const res = await fetchWithTimeout(endpoint, { method: "GET" }, 30000);
         if (!res.ok) throw new Error("tikwm-http");
         const json = await res.json();
         if (json.code !== 0 || !json.data) {
@@ -558,6 +419,7 @@
         const music = (d.music_info && (d.music_info.play || d.music_info.url)) || d.music || "";
         return {
           source: "tikwm",
+          platform: { id: "tiktok", name: "TikTok" },
           id: d.id || "",
           title: d.title || "",
           cover: absUrl(d.cover || d.origin_cover || ""),
@@ -570,38 +432,55 @@
           wmSize: d.wm_size || 0,
           music: absUrl(music),
           images: Array.isArray(d.images) ? d.images.map(absUrl).filter(Boolean) : [],
+          formats: [],
           authorId: author.unique_id || author.uniqueId || "",
           nickname: author.nickname || author.unique_id || "TikTok",
           avatar: absUrl(author.avatar || "")
         };
       }
 
-      async function fetchGendownload(url) {
-        const res = await fetch(GENDOWNLOAD, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ url: url })
-        });
-        if (!res.ok) throw new Error("gen-http");
-        const json = await res.json();
-        if (!json || !Array.isArray(json.formats) || !json.formats.length) {
-          throw new Error("gen-empty");
+      async function fetchGendownload(url, platform) {
+        let res;
+        try {
+          res = await fetchWithTimeout(GENDOWNLOAD, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ url: url })
+          }, EXTRACT_TIMEOUT);
+        } catch (e) {
+          const err = new Error("timeout");
+          err.friendly = "Servis yanıt vermedi veya zaman aşımına uğradı. Yoğun olabilir; biraz sonra tekrar dene.";
+          throw err;
         }
-        const videos = json.formats.filter(function (f) { return f && f.type === "video" && f.url; });
-        const audios = json.formats.filter(function (f) { return f && f.type === "audio" && f.url; });
-        videos.sort(function (a, b) {
-          const rank = function (l) {
-            const m = String(l.label || "").match(/(\d+)/);
-            return m ? Number(m[1]) : 0;
-          };
-          return rank(b) - rank(a);
-        });
+        if (!res.ok) {
+          const err = new Error("gen-http-" + res.status);
+          if (res.status === 422) err.friendly = "Bu bağlantı çözümlenemedi. Postun herkese açık bir video olduğundan emin ol.";
+          else err.friendly = "Servis bu bağlantıyı şu an indirmeye açamadı (HTTP " + res.status + ").";
+          throw err;
+        }
+        const json = await res.json();
+        const formats = Array.isArray(json.formats) ? json.formats.filter(function (f) { return f && f.url; }) : [];
+        if (!formats.length) {
+          const err = new Error("gen-empty");
+          err.friendly = "Bu gönderide indirilebilir bir video bulunamadı. Gizli, silinmiş veya servis bu platformu şu an açamıyor olabilir.";
+          throw err;
+        }
+        const videos = formats.filter(function (f) { return f.type === "video"; });
+        const audios = formats.filter(function (f) { return f.type === "audio"; });
+        const images = formats.filter(function (f) { return f.type === "image" || /jpe?g|png|webp/i.test(f.ext || ""); });
+        videos.sort(function (a, b) { return qualityRank(b.label) - qualityRank(a.label); });
         const best = videos[0] || null;
-        const hd = videos.find(function (f) { return /1080|hd/i.test(f.label || ""); }) || (best && /1080|720|hd/i.test(best.label || "") ? best : null);
+        const hd = videos.find(function (f) { return qualityRank(f.label) >= 1080; }) || null;
+        const plat = platform || detectPlatform(url);
+        const title = json.title || "";
+        let nickname = json.author || plat.name;
+        let authorId = json.author || "";
+        // Sometimes title is "Name - author (1080p, h264)"
         return {
           source: "gendownload",
+          platform: plat,
           id: "",
-          title: json.title || "",
+          title: title,
           cover: json.thumbnail || "",
           duration: json.duration || 0,
           play: best ? best.url : "",
@@ -611,16 +490,18 @@
           hdSize: hd && hd.filesize ? hd.filesize : 0,
           wmSize: 0,
           music: audios[0] ? audios[0].url : "",
-          images: [],
-          authorId: json.author || "",
-          nickname: json.author || "TikTok",
+          images: images.map(function (f) { return f.url; }),
+          formats: formats,
+          authorId: authorId,
+          nickname: nickname,
           avatar: "",
           qualityLabel: best ? best.label : ""
         };
       }
 
       function humanApiError(err) {
-        const msg = (err && (err.tikwmMsg || err.message) || "").toLowerCase();
+        const msg = (err && (err.friendly || err.tikwmMsg || err.message) || "").toLowerCase();
+        if (err && err.friendly) return err.friendly;
         if (msg.includes("url parsing") || msg.includes("check url")) {
           return "Bağlantı çözümlenemedi. Tam video linkini veya güncel bir kısa linki dene.";
         }
@@ -630,73 +511,118 @@
         if (msg.includes("private") || msg.includes("removed") || msg.includes("not found")) {
           return "Video bulunamadı. Gizli, silinmiş veya bölgede kapalı olabilir.";
         }
+        if (msg === "timeout" || msg.includes("abort")) {
+          return "Servis yanıt vermedi veya zaman aşımına uğradı. Yoğun olabilir; biraz sonra tekrar dene.";
+        }
         return "";
       }
 
       async function resolveVideo(url) {
-        try {
-          return await fetchTikwm(url);
-        } catch (e1) {
-          try {
-            const fallback = await fetchGendownload(url);
-            fallback._primaryError = e1;
-            return fallback;
-          } catch (e2) {
-            const nice = humanApiError(e1) || humanApiError(e2);
-            const err = new Error(nice || "no-api");
-            err.friendly = nice || "Video bilgisi alınamadı. Bağlantıyı kontrol et veya biraz sonra tekrar dene.";
-            throw err;
+        const platform = detectPlatform(url);
+        if (platform.id === "tiktok") {
+          try { return await fetchTikwm(url); }
+          catch (e1) {
+            try {
+              const fallback = await fetchGendownload(url, platform);
+              fallback._primaryError = e1;
+              return fallback;
+            } catch (e2) {
+              const err = new Error("no-api");
+              err.friendly = humanApiError(e1) || humanApiError(e2) || "Video bilgisi alınamadı. Bağlantıyı kontrol et veya biraz sonra tekrar dene.";
+              throw err;
+            }
           }
+        }
+        try {
+          return await fetchGendownload(url, platform);
+        } catch (e) {
+          const err = new Error("no-api");
+          err.friendly = humanApiError(e) || "Video bilgisi alınamadı. Bağlantıyı kontrol et veya biraz sonra tekrar dene.";
+          throw err;
         }
       }
 
+      function looksLikeAutoTitle(title, platform) {
+        if (!title) return true;
+        const t = title.trim();
+        if (/^(instagram|twitter|facebook|youtube|tiktok|pinterest)_/i.test(t)) return true;
+        return false;
+      }
+
       function render(data) {
-        const handle = data.authorId ? "@" + data.authorId : data.nickname;
+        const plat = data.platform || { id: "other", name: "Video" };
+        const handle = data.authorId ? (data.authorId.charAt(0) === "@" ? data.authorId : "@" + data.authorId) : "";
         const dur = formatDuration(data.duration);
         const isPhotos = data.images && data.images.length > 0;
         const nowm = data.hdplay || data.play;
         const isHd = Boolean(data.hdplay);
         const nowmSize = isHd ? (data.hdSize || data.playSize) : data.playSize;
         const chips = [];
+        chips.push(plat.name);
         if (dur) chips.push(dur);
         if (isPhotos) chips.push(data.images.length + " fotoğraf");
-        if (isHd) chips.push("HD");
-        else if (data.qualityLabel) chips.push(escapeHtml(data.qualityLabel));
-        if (data.source === "gendownload") chips.push("yedek servis");
+        if (data.source === "tikwm" && isHd) chips.push("HD");
+        else if (data.qualityLabel) chips.push(data.qualityLabel);
+        if (data.source === "gendownload" && plat.id === "tiktok") chips.push("yedek servis");
 
         let html = '<div class="meta">';
         html += '<div class="thumb-wrap">';
         if (data.cover) {
           html += '<img alt="Kapak görseli" referrerpolicy="no-referrer" src="' + escapeHtml(data.cover) + '" onerror="this.style.display=\'none\'">';
+        } else {
+          html += escapeHtml(plat.name);
         }
         html += '</div><div>';
-        html += '<div class="who">' + escapeHtml(data.nickname || "TikTok");
-        html += '<small>' + escapeHtml(handle) + '</small></div>';
-        if (data.title) html += '<p class="caption">' + escapeHtml(data.title) + '</p>';
+        html += '<div class="who">' + escapeHtml(data.nickname || plat.name);
+        if (handle && handle !== "@") html += '<small>' + escapeHtml(handle) + '</small>';
+        html += '</div>';
+        if (data.title && !looksLikeAutoTitle(data.title, plat)) {
+          html += '<p class="caption">' + escapeHtml(data.title) + '</p>';
+        }
         if (chips.length) {
-          html += '<div class="chips">' + chips.map(function (c) { return '<span class="chip">' + c + '</span>'; }).join("") + '</div>';
+          html += '<div class="chips">' + chips.map(function (c) { return '<span class="chip">' + escapeHtml(c) + '</span>'; }).join("") + '</div>';
         }
         html += '</div></div><div class="actions">';
 
-        if (nowm) {
-          const hint = (isHd ? "HD, filigransız" : "Filigransız") + (nowmSize ? " · " + formatSize(nowmSize) : "");
-          html += '<button type="button" class="btn-dl primary" data-act="nowm">';
-          html += '<span class="left"><span class="title">Filigransız MP4 indir</span><span class="hint">' + hint + '</span></span>';
-          html += isHd ? '<span class="badge">HD</span>' : '<span class="badge ghost">MP4</span>';
-          html += '</button>';
-        }
-
-        if (data.wmplay) {
-          const hint = "Üzerinde TikTok filigranı var" + (data.wmSize ? " · " + formatSize(data.wmSize) : "");
-          html += '<button type="button" class="btn-dl" data-act="wm">';
-          html += '<span class="left"><span class="title">Filigranlı indir</span><span class="hint">' + hint + '</span></span>';
-          html += '<span class="badge ghost">MP4</span></button>';
-        }
-
-        if (data.music) {
-          html += '<button type="button" class="btn-dl" data-act="music">';
-          html += '<span class="left"><span class="title">Sadece ses (MP3)</span><span class="hint">Videonun sesini kaydet</span></span>';
-          html += '<span class="badge ghost">MP3</span></button>';
+        if (data.source === "tikwm") {
+          if (nowm) {
+            const hint = (isHd ? "HD, filigransız" : "Filigransız") + (nowmSize ? " · " + formatSize(nowmSize) : "");
+            html += '<button type="button" class="btn-dl primary" data-act="nowm">';
+            html += '<span class="left"><span class="title">Filigransız MP4 indir</span><span class="hint">' + hint + '</span></span>';
+            html += isHd ? '<span class="badge">HD</span>' : '<span class="badge ghost">MP4</span>';
+            html += '</button>';
+          }
+          if (data.wmplay) {
+            const hint = "Üzerinde TikTok filigranı var" + (data.wmSize ? " · " + formatSize(data.wmSize) : "");
+            html += '<button type="button" class="btn-dl" data-act="wm">';
+            html += '<span class="left"><span class="title">Filigranlı indir</span><span class="hint">' + hint + '</span></span>';
+            html += '<span class="badge ghost">MP4</span></button>';
+          }
+          if (data.music) {
+            html += '<button type="button" class="btn-dl" data-act="music">';
+            html += '<span class="left"><span class="title">Sadece ses (MP3)</span><span class="hint">Videonun sesini kaydet</span></span>';
+            html += '<span class="badge ghost">MP3</span></button>';
+          }
+        } else {
+          const videos = (data.formats || []).filter(function (f) { return f.type === "video" && f.url; });
+          const audios = (data.formats || []).filter(function (f) { return f.type === "audio" && f.url; });
+          videos.sort(function (a, b) { return qualityRank(b.label) - qualityRank(a.label); });
+          videos.forEach(function (f, i) {
+            const label = f.label || "Video";
+            const hint = (f.ext ? f.ext.toUpperCase() : "MP4") + (f.filesize ? " · " + formatSize(f.filesize) : "");
+            html += '<button type="button" class="btn-dl' + (i === 0 ? " primary" : "") + '" data-act="fmt" data-i="' + i + '" data-kind="video">';
+            html += '<span class="left"><span class="title">' + (i === 0 ? "MP4 indir" : escapeHtml(label) + " indir") + '</span>';
+            html += '<span class="hint">' + escapeHtml(i === 0 ? (label + (hint ? " · " + hint : "")) : hint) + '</span></span>';
+            html += '<span class="badge' + (i === 0 ? "" : " ghost") + '">' + escapeHtml(label) + '</span></button>';
+          });
+          audios.forEach(function (f, i) {
+            html += '<button type="button" class="btn-dl" data-act="fmt" data-i="' + i + '" data-kind="audio">';
+            html += '<span class="left"><span class="title">Sadece ses</span><span class="hint">' + escapeHtml((f.label || "Ses") + " · " + ((f.ext || "mp3").toUpperCase())) + '</span></span>';
+            html += '<span class="badge ghost">' + escapeHtml((f.ext || "mp3").toUpperCase()) + '</span></button>';
+          });
+          if (plat.id === "x") {
+            html += '<p class="caption" style="-webkit-line-clamp:6;margin-top:4px;color:var(--muted)">X videoları bazen tek parça MP4 yerine yayın akışı (HLS) veya görsel gelir. İndirme açılmazsa videoyu yeniden getirmeyi dene.</p>';
+          }
         }
 
         html += '</div>';
@@ -718,16 +644,39 @@
         resultEl.hidden = false;
         resultEl.classList.add("show");
         resultEl._data = data;
-
         resultEl.querySelectorAll("[data-act]").forEach(function (btn) {
           btn.addEventListener("click", function () { onAction(btn); });
         });
       }
 
       function fileBase(data) {
-        const who = sanitizeName(data.authorId || data.nickname, "tiktok");
+        const plat = (data.platform && data.platform.id) || "video";
+        const who = sanitizeName(data.authorId || data.nickname, plat);
         const id = sanitizeName(data.id || "video", "video");
         return who + "_" + id;
+      }
+
+      function extFromMime(type, fallback) {
+        type = String(type || "").toLowerCase();
+        if (type.indexOf("mp4") !== -1) return "mp4";
+        if (type.indexOf("webm") !== -1) return "webm";
+        if (type.indexOf("mpeg") !== -1 || type.indexOf("mp3") !== -1) return "mp3";
+        if (type.indexOf("m4a") !== -1 || type.indexOf("mp4a") !== -1) return "m4a";
+        if (type.indexOf("jpeg") !== -1 || type.indexOf("jpg") !== -1) return "jpg";
+        if (type.indexOf("png") !== -1) return "png";
+        if (type.indexOf("webp") !== -1) return "webp";
+        if (type.indexOf("gif") !== -1) return "gif";
+        return fallback || "mp4";
+      }
+
+      function isHlsBlob(blob) {
+        return blob && blob.size < 2e6 && blob.text && true;
+      }
+
+      async function blobLooksLikeHls(blob) {
+        const slice = blob.slice(0, 16);
+        const text = await slice.text();
+        return text.indexOf("#EXTM3U") === 0;
       }
 
       async function downloadFile(url, filename) {
@@ -735,6 +684,15 @@
           const res = await fetch(url, { mode: "cors" });
           if (!res.ok) throw new Error("http " + res.status);
           const blob = await res.blob();
+          if (await blobLooksLikeHls(blob)) {
+            const err = new Error("hls");
+            err.friendly = "Bu video tek parça MP4 olarak gelmedi (yayın akışı). Bu gönderi için dosya kaydı şu an mümkün değil.";
+            throw err;
+          }
+          const mimeExt = extFromMime(blob.type);
+          if (mimeExt === "jpg" || mimeExt === "png" || mimeExt === "webp" || mimeExt === "gif") {
+            filename = filename.replace(/\.(mp4|webm|mp3|m4a)$/i, "") + "." + mimeExt;
+          }
           const obj = URL.createObjectURL(blob);
           const a = document.createElement("a");
           a.href = obj;
@@ -743,8 +701,9 @@
           a.click();
           a.remove();
           setTimeout(function () { URL.revokeObjectURL(obj); }, 4000);
-          return "blob";
+          return { how: "blob", filename: filename };
         } catch (err) {
+          if (err && err.friendly) throw err;
           const a = document.createElement("a");
           a.href = url;
           a.target = "_blank";
@@ -753,7 +712,7 @@
           document.body.appendChild(a);
           a.click();
           a.remove();
-          return "tab";
+          return { how: "tab", filename: filename };
         }
       }
 
@@ -765,10 +724,8 @@
         btn.disabled = true;
         const old = btn.innerHTML;
         setStatus("info", '<span class="spin"></span>İndiriliyor…');
-
         try {
-          let url = "";
-          let name = base + ".mp4";
+          let url = "", name = base + ".mp4";
           if (act === "nowm") {
             url = data.hdplay || data.play;
             name = base + (data.hdplay ? "_filigransiz_hd.mp4" : "_filigransiz.mp4");
@@ -778,15 +735,26 @@
           } else if (act === "music") {
             url = data.music;
             name = base + "_ses.mp3";
+          } else if (act === "fmt") {
+            const kind = btn.getAttribute("data-kind");
+            const i = Number(btn.getAttribute("data-i")) || 0;
+            const list = (data.formats || []).filter(function (f) { return f.type === kind && f.url; });
+            if (kind === "video") list.sort(function (a, b) { return qualityRank(b.label) - qualityRank(a.label); });
+            const f = list[i];
+            if (!f) throw new Error("no-url");
+            url = f.url;
+            const ext = (f.ext || (kind === "audio" ? "mp3" : "mp4")).replace(/^\./, "");
+            const q = sanitizeName(f.label || kind, kind);
+            name = base + "_" + q + "." + ext;
           } else if (act === "img") {
             const i = Number(btn.getAttribute("data-i")) || 0;
             url = data.images[i];
             name = base + "_foto_" + (i + 1) + ".jpg";
           } else if (act === "all-img") {
             for (let i = 0; i < data.images.length; i++) {
-              const how = await downloadFile(data.images[i], base + "_foto_" + (i + 1) + ".jpg");
-              if (how === "tab") {
-                setStatus("ok", "Tarayıcı doğrudan indirmeye izin vermedi; fotoğraflar yeni sekmelerde açıldı. Oradan kaydedebilirsin.");
+              const res = await downloadFile(data.images[i], base + "_foto_" + (i + 1) + ".jpg");
+              if (res.how === "tab") {
+                setStatus("ok", "Tarayıcı doğrudan indirmeye izin vermedi; dosyalar yeni sekmelerde açıldı. Oradan kaydedebilirsin.");
                 return;
               }
             }
@@ -794,14 +762,14 @@
             return;
           }
           if (!url) throw new Error("no-url");
-          const how = await downloadFile(url, name);
-          if (how === "tab") {
+          const res = await downloadFile(url, name);
+          if (res.how === "tab") {
             setStatus("ok", "Dosya yeni sekmede açıldı. Tarayıcı doğrudan kaydetmeye izin vermezse oradan indirebilirsin.");
           } else {
-            setStatus("ok", "İndirme başladı: " + escapeHtml(name));
+            setStatus("ok", "İndirme başladı: " + escapeHtml(res.filename || name));
           }
         } catch (err) {
-          setStatus("err", "İndirme başlatılamadı. Bağlantı süresi dolmuş olabilir, videoyu yeniden getirmeyi dene.");
+          setStatus("err", (err && err.friendly) || "İndirme başlatılamadı. Bağlantı süresi dolmuş olabilir, videoyu yeniden getirmeyi dene.");
         } finally {
           btn.disabled = false;
           btn.innerHTML = old;
@@ -810,9 +778,9 @@
 
       async function onSubmit(ev) {
         if (ev) ev.preventDefault();
-        const url = extractTikTokUrl(input.value);
-        if (!url || !isTikTokUrl(url)) {
-          setStatus("err", "Bu bir TikTok bağlantısı gibi durmuyor. tiktok.com, vm.tiktok.com veya vt.tiktok.com linkini yapıştır.");
+        const url = extractMediaUrl(input.value);
+        if (!url || !isSupportedUrl(url)) {
+          setStatus("err", "Geçerli bir bağlantı gibi durmuyor. TikTok, Instagram, YouTube, Facebook veya başka bir video linkini yapıştır.");
           resultEl.classList.remove("show");
           resultEl.hidden = true;
           return;
@@ -821,17 +789,20 @@
         goBtn.disabled = true;
         resultEl.classList.remove("show");
         resultEl.hidden = true;
-        setStatus("info", '<span class="spin"></span>Video bilgisi alınıyor…');
+        const plat = detectPlatform(url);
+        setStatus("info", '<span class="spin"></span>' + escapeHtml(plat.name) + " bilgisi alınıyor… Bu işlem bir dakika sürebilir.");
         try {
           const data = await resolveVideo(url);
-          if (!data.play && !data.hdplay && !(data.images && data.images.length)) {
+          const hasVideo = data.play || data.hdplay || (data.formats || []).some(function (f) { return f.type === "video" && f.url; });
+          const hasPhoto = data.images && data.images.length;
+          const hasAudio = data.music || (data.formats || []).some(function (f) { return f.type === "audio" && f.url; });
+          if (!hasVideo && !hasPhoto && !hasAudio) {
             setStatus("err", "Bu gönderide indirilebilir bir video veya fotoğraf bulunamadı.");
             return;
           }
           render(data);
-          const kind = (data.images && data.images.length && !data.play && !data.hdplay) ? "Fotoğraf gönderisi hazır." : "Video hazır. İndirmek istediğin sürümü seç.";
           clearStatus();
-          setStatus("ok", kind);
+          setStatus("ok", hasPhoto && !hasVideo ? "Fotoğraf gönderisi hazır." : "Hazır. İndirmek istediğin sürümü seç.");
         } catch (err) {
           setStatus("err", (err && err.friendly) || "Video bilgisi alınamadı. Bağlantıyı kontrol et veya biraz sonra tekrar dene.");
         } finally {
@@ -846,13 +817,9 @@
           if (!text) throw new Error("empty");
           input.value = text.trim();
           input.focus();
-          const url = extractTikTokUrl(input.value);
-          if (url) {
-            input.value = url;
-            onSubmit();
-          } else {
-            setStatus("info", "Panodaki metin yapıştırıldı. TikTok bağlantısını kontrol edip getir’e bas.");
-          }
+          const url = extractMediaUrl(input.value);
+          if (url) { input.value = url; onSubmit(); }
+          else setStatus("info", "Panodaki metin yapıştırıldı. Bağlantıyı kontrol edip getir’e bas.");
         } catch (err) {
           setStatus("err", "Tarayıcı panoya izin vermedi. Bağlantıyı kutuya elle yapıştır (Ctrl+V veya yapıştır menüsü).");
           input.focus();
@@ -861,18 +828,13 @@
 
       form.addEventListener("submit", onSubmit);
 
-      /* --- PWA: share target, service worker, ana ekrana ekle --- */
+      /* PWA hooks live below; no-op if elements are missing */
       (function pwa() {
         try {
           const params = new URLSearchParams(location.search);
-          const raw = [params.get("url"), params.get("text"), params.get("title")]
-            .filter(Boolean)
-            .join(" ");
-          const shared = extractTikTokUrl(raw);
-          if (shared) {
-            input.value = shared;
-            onSubmit();
-          }
+          const raw = [params.get("url"), params.get("text"), params.get("title")].filter(Boolean).join(" ");
+          const shared = extractMediaUrl(raw);
+          if (shared) { input.value = shared; onSubmit(); }
         } catch (err) {}
 
         if ("serviceWorker" in navigator) {
@@ -882,6 +844,7 @@
         const installBtn = document.getElementById("installBtn");
         const sheet = document.getElementById("iosSheet");
         const sheetClose = document.getElementById("iosSheetClose");
+        if (!installBtn) return;
         let deferredPrompt = null;
 
         function isStandalone() {
@@ -894,29 +857,15 @@
             || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
         }
         function showInstall() {
-          if (isStandalone()) {
-            installBtn.classList.remove("visible");
-            return;
-          }
+          if (isStandalone()) { installBtn.classList.remove("visible"); return; }
           installBtn.classList.add("visible");
         }
-        function hideInstall() {
-          installBtn.classList.remove("visible");
-        }
-        function openSheet() {
-          sheet.hidden = false;
-          sheet.classList.add("open");
-        }
-        function closeSheet() {
-          sheet.classList.remove("open");
-          sheet.hidden = true;
-        }
+        function hideInstall() { installBtn.classList.remove("visible"); }
+        function openSheet() { if (!sheet) return; sheet.hidden = false; sheet.classList.add("open"); }
+        function closeSheet() { if (!sheet) return; sheet.classList.remove("open"); sheet.hidden = true; }
 
-        if (isStandalone()) {
-          hideInstall();
-        } else if (isIOS()) {
-          showInstall();
-        }
+        if (isStandalone()) hideInstall();
+        else if (isIOS()) showInstall();
 
         window.addEventListener("beforeinstallprompt", function (e) {
           e.preventDefault();
@@ -924,19 +873,14 @@
           if (!isStandalone()) showInstall();
         });
         window.addEventListener("appinstalled", function () {
-          deferredPrompt = null;
-          hideInstall();
-          closeSheet();
+          deferredPrompt = null; hideInstall(); closeSheet();
         });
-        ["change", "change"].forEach(function () {});
         ["(display-mode: standalone)", "(display-mode: fullscreen)"].forEach(function (q) {
           const mq = window.matchMedia(q);
           const onChange = function () { if (isStandalone()) hideInstall(); };
           if (mq.addEventListener) mq.addEventListener("change", onChange);
           else if (mq.addListener) mq.addListener(onChange);
         });
-
-        // If the native prompt never arrives (Firefox etc.), still offer a hint.
         setTimeout(function () {
           if (!isStandalone() && !deferredPrompt && !isIOS()) showInstall();
         }, 2500);
@@ -951,21 +895,16 @@
             deferredPrompt = null;
             return;
           }
-          if (isIOS()) {
-            openSheet();
-            return;
-          }
           openSheet();
-          document.getElementById("iosSheetTitle").textContent = "Ana ekrana ekle";
-          const lede = sheet.querySelector(".lede");
-          if (lede) {
-            lede.textContent = "Tarayıcı menüsünden “Uygulamayı yükle” veya “Ana ekrana ekle”yi seç. iPhone’da bunu Safari ile yapman gerekir.";
+          if (!isIOS() && sheet) {
+            const title = document.getElementById("iosSheetTitle");
+            if (title) title.textContent = "Ana ekrana ekle";
+            const lede = sheet.querySelector(".lede");
+            if (lede) lede.textContent = "Tarayıcı menüsünden “Uygulamayı yükle” veya “Ana ekrana ekle”yi seç. iPhone’da bunu Safari ile yapman gerekir.";
           }
         });
-        sheetClose.addEventListener("click", closeSheet);
-        sheet.addEventListener("click", function (e) {
-          if (e.target === sheet) closeSheet();
-        });
+        if (sheetClose) sheetClose.addEventListener("click", closeSheet);
+        if (sheet) sheet.addEventListener("click", function (e) { if (e.target === sheet) closeSheet(); });
       })();
     })();
   </script>

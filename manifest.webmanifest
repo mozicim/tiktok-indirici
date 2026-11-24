@@ -1,8 +1,8 @@
 {
   "id": "./",
-  "name": "TikTok İndirici",
-  "short_name": "TT İndir",
-  "description": "Kendi TikTok videolarını filigransız MP4 olarak kaydet.",
+  "name": "Video İndirici",
+  "short_name": "İndir",
+  "description": "Kendi videolarını TikTok, Instagram, YouTube, Facebook ve diğer platformlardan kaydet.",
   "lang": "tr",
   "dir": "ltr",
   "start_url": ".",

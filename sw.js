@@ -1,5 +1,5 @@
-/* TikTok İndirici — app shell only. API and media are never cached. */
-const CACHE = "tt-indirici-v1";
+/* Video İndirici — app shell only. API and media are never cached. */
+const CACHE = "video-indirici-v2";
 const SHELL = [
   "./",
   "./index.html",
@@ -29,9 +29,7 @@ self.addEventListener("activate", (event) => {
 self.addEventListener("fetch", (event) => {
   const req = event.request;
   if (req.method !== "GET") return;
-
   const url = new URL(req.url);
-  // Never intercept (and therefore never cache) API or media on other origins.
   if (url.origin !== self.location.origin) return;
 
   event.respondWith((async () => {
